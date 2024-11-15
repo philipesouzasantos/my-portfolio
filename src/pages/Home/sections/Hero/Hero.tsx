@@ -1,19 +1,23 @@
-import { Button, Container, styled, Typography } from "@mui/material"
+import { Container, styled, Typography } from "@mui/material"
 import Grid from '@mui/material/Grid2';
 import Avatar from '../../../../assets/images/avatar.jpeg';
 import DownloadIcon from '@mui/icons-material/Download';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import StyledButton from "../../../../components/StyledButton/StyledButton";
 
 const Hero = () => {
 
-    const StyledHero = styled("div")(()=> ({
-        backgroundColor: "black",
-        height:"100vh"
+    const StyledHero = styled("div")(({ theme })=> ({
+        backgroundColor: theme.palette.primary.main,
+        height:"100vh",
+        display: "flex",
+        alignItems: "center"
     }))
 
-    const StyledImg = styled("img")(()=> ({
-        width: "100%",
-        borderRadius: "50%"
+    const StyledImg = styled("img")(({ theme })=> ({
+        width: "80%",
+        borderRadius: "50%",
+        border: `1px solid ${theme.palette.primary.contrastText}`
     }))
 
 // obs: Container permite melhorar bastante a 
@@ -22,26 +26,30 @@ const Hero = () => {
     return (
       <>
         <StyledHero>
-            <Container>
+            <Container maxWidth="lg">
                 <Grid container spacing={2}>
-                    <Grid size={{ xs: 12, md: 4 }}>
+                    <Grid size={{ xs: 12, md: 5 }}>
                         <StyledImg src={Avatar} />
                     </Grid>
-                    <Grid size={{ xs: 12, md: 8 }}>
-                        <Typography color="primary" variant="h1" textAlign="center">Philipe Siqueira</Typography>
-                        <Typography color="primary" variant="h2" textAlign="center">Business Intelligence Developer</Typography>
-                        <Grid container display={"flex"} justifyContent={"center"}>
+                    <Grid size={{ xs: 12, md: 7 }}>
+                        <Typography color="primary.contrastText" variant="h1" textAlign="center">Philipe Souza</Typography>
+                        <Typography color="primary.contrastText" variant="h2" textAlign="center">Business Intelligence Developer</Typography>
+                        <Grid container display={"flex"} justifyContent={"center"} spacing={3}>
                             <Grid size={{ xs: 12, md: 6 }} display={"flex"} justifyContent={"center"}>
-                                <Button>
+                                <StyledButton>
                                     <DownloadIcon/>
-                                    Download CV
-                                </Button>
+                                    <Typography>
+                                        Download CV
+                                    </Typography>
+                                </StyledButton>
                             </Grid>
                             <Grid size={{ xs: 12, md: 6  }} display={"flex"} justifyContent={"center"}>
-                                <Button>
+                                <StyledButton>
                                     <MailOutlineIcon/>
-                                    Contact me
-                                </Button>
+                                    <Typography>
+                                        Contact me
+                                    </Typography>
+                                </StyledButton>
                             </Grid>
                         </Grid>
                     </Grid>
