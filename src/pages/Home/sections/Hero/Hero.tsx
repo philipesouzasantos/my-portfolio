@@ -12,7 +12,13 @@ const Hero = () => {
         backgroundColor: theme.palette.primary.main,
         height:"100vh",
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        [theme.breakpoints.up('xs')]:{ 
+            paddingTop: "80px"
+        },
+        [theme.breakpoints.up('md')]:{
+            paddingTop: "0px"
+        }
     }))
 
     const StyledImg = styled("img")(({ theme })=> ({
@@ -44,7 +50,7 @@ const Hero = () => {
                         <Typography color="primary.contrastText" variant="h2" textAlign="center">I'm a BI Developer</Typography>
                         <Grid container display={"flex"} justifyContent={"center"} spacing={3} pt={3}>
                             <Grid size={{ xs: 12, md: 4 }} display={"flex"} justifyContent={"center"}>
-                                <StyledButton>
+                                <StyledButton onClick={() => console.log('download')}>
                                     <DownloadIcon />
                                     <Typography>
                                         Download CV
@@ -52,7 +58,7 @@ const Hero = () => {
                                 </StyledButton>
                             </Grid>
                             <Grid size={{ xs: 12, md: 4  }} display={"flex"} justifyContent={"center"}>
-                                <StyledButton>
+                                <StyledButton onClick={() => console.log('download')}>
                                     <MailOutlineIcon />
                                     <Typography>
                                         Contact me
